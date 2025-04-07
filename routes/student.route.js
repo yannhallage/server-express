@@ -6,7 +6,7 @@ const { CreatetStudents,
     GetStudent,
     GetStudents,
     UpdateStudent,
-    DeleteStudent } = require('../controllers/students.controller')
+    DeleteStudent , GetSpecialite} = require('../controllers/students.controller')
 // dans le cas de la creation de l'entité etudiant on a besoin des fonctionnalités 
 // CRUD 
 
@@ -15,6 +15,9 @@ router.post('/', CreatetStudents)
 
 // affichage des etudiants 
 router.get('/', GetStudents)
+
+// avec un condition 
+router.get('/specialite', GetSpecialite)
 
 // afficher un etudiant par son id 
 router.get('/:id', GetStudent)

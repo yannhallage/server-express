@@ -94,12 +94,31 @@ const DeleteStudent = async (req , res) => {
     }
 }
 
-
+const GetSpecialite = async (req, res) =>{
+    try {  
+        const etudiants = await Students.find({
+            specialite : "Developpement Informatique"
+        })
+        if(!etudiants){
+            return res.status(404).json({
+                message : "Aucun etudiant n'a été trouvé ! "
+            })
+        }
+        res.status(200).json({
+            etudiants
+        })
+     }catch(error){
+        res.status(400).json({
+            message : "Erreur lors de la recherche de la specialite ! "
+        })
+     }
+}
 
 module.exports =  {
     CreatetStudents, 
     GetStudent,
     GetStudents,
     UpdateStudent,
-    DeleteStudent
+    DeleteStudent,
+    GetSpecialite
 }

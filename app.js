@@ -12,6 +12,9 @@ app.use(express.urlencoded({
 app.use('/api/students' , Useroute)
 
 
+
 // error 404 on page
 app.use(NotFound)
+
+
 module.exports = app
