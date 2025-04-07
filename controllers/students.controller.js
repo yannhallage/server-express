@@ -31,7 +31,7 @@ const GetStudents = async (req , res) =>{
 
 const GetStudent = async (req , res) => {
     try {
-        const {id} = req.parmas
+        const { id } = req.params
         const student = await Students.findById(id)
 
         if(!student){
@@ -53,15 +53,16 @@ const GetStudent = async (req , res) => {
 
 const UpdateStudent = async (req, res) =>{
     try {
-        const {id} = req.params
-        const student = await Students.findByIdAndUpdate(rep.params)
+        const { id } = req.params
+        const student = await Students.findByIdAndUpdate(id, req.body, {new :true})
         if(!student){
             return res.status(404).json({
                 message : "Etudiant non trouvé ! "
             })
         }
         res.status(200).json({
-            message : "Etudiant mis a jour avec succes ! "
+            message : "Etudiant mis a jour avec succes ! ",
+            student
         })
     }
     catch(error){
@@ -73,7 +74,7 @@ const UpdateStudent = async (req, res) =>{
 
 const DeleteStudent = async (req , res) => {
     try {
-        const {id} = req.params
+        const { id } = req.params
         const student = await Students.findByIdAndDelete(id)
 
         if(!student){
